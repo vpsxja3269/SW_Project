@@ -11,7 +11,7 @@ from time import sleep
 st.set_page_config(
     page_icon="🐶",
     page_title="streamlit test web site",
-    layout="wide",gi
+    layout="wide"
 )
 
 # 로딩바 구현하기

@@ -2,15 +2,17 @@ import streamlit as st
 import openai
 
 # OpenAI API 인증 설정
-openai.api_key = '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'
+openai.api_key = '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'
 
 # OpenAI API로 대화 생성하는 함수
 def generate_response(input_text):
     response = openai.Completion.create(
-        engine='davinci',
+        engine='text-davinci-003',
         prompt=input_text,
         max_tokens=100,
-        temperature=0.7
+        temperature=0.7,
+        n=1,
+        stop=None
     )
     return response.choices[0].text.strip()
 
@@ -19,15 +21,21 @@ def main():
     st.title("대화형 인공지능")
 
     # 사용자 입력 받기
-    user_input = st.text_input("사용자 입력", key="user_input", value="")
+    user_input = st.text_input("사용자 입력", value="")
 
     # 사용자 입력이 있을 경우에만 대화 생성
     if user_input:
         # OpenAI API로 대화 생성
         response = generate_response(user_input)
 
-        # 생성된 대화 결과 출력
-        st.text_area("대화 결과", value=response, height=400, key="output")
+        # 질문과 답변 출력
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader("질문:")
+            st.write(user_input)
+        with col2:
+            st.subheader("답변:")
+            st.text_area("답변 보기", value=response, height=200)
 
 if __name__ == '__main__':
     main()
