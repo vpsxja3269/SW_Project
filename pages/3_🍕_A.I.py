@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 
 # OpenAI API 인증 설정
-openai.api_key = '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'
+openai.api_key = '안알려주시롱'
 
 # OpenAI API로 대화 생성하는 함수
 def generate_response(input_text):
@@ -18,7 +18,7 @@ def generate_response(input_text):
 
 # Streamlit 애플리케이션
 def main():
-    st.title("대화형 인공지능")
+    st.title("Opem AI Study")
 
     # 사용자 입력 받기
     user_input = st.text_input("사용자 입력", value="")
